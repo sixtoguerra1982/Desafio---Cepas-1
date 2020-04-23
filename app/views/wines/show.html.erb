@@ -3,7 +3,15 @@
 <p>
   <strong>Name:</strong>
   <%= @wine.name %>
+  <%= link_to 'Edit', edit_wine_path(@wine) %> |
 </p>
 
-<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<h1>Strain</h1>
+<% @strains.each do |cepa|  %>
+	<p><%= cepa.strain.name %></p>
+	<p><%= cepa.percentage %>
+	<%= link_to "Edit", edit_strain_wine_path(cepa) %>
+	</p>
+<% end %>
+
 <%= link_to 'Back', wines_path %>

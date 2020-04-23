@@ -10,7 +10,7 @@ class StrainWinesController < ApplicationController
       if params[:strain].present?
         @strain_wines = StrainWine.where(strain_id: params[:strain].to_i)
       else
-        @strain_wines = StrainWine.all.order(:id)
+        @strain_wines = StrainWine.all.order(:id).includes(:wine, :strain)
       end
     end
     @wines = Wine.all.order(:name)
@@ -52,7 +52,7 @@ class StrainWinesController < ApplicationController
   def update
     respond_to do |format|
       if @strain_wine.update(strain_wine_update_params)
-        format.html { redirect_to strain_wines_path, notice: 'Strain wine was successfully updated.' }
+        format.html { redirect_to wine_path(@strain_wine.wine), notice: 'Strain wine was successfully updated.' }
         format.json { render :show, status: :ok, location: @strain_wine }
       else
         format.html { redirect_to strain_wines_path }

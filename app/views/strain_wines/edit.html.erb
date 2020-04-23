@@ -1,6 +1,9 @@
 <h1>Editing Strain Wine</h1>
 
+<p>Wine : <%= @strain_wine.wine.name %></p>
+<p>Strain : <%= @strain_wine.strain.name %></p>
+
 <%= render 'form', strain_wine: @strain_wine %>
 
-<%= link_to 'Show', @strain_wine %> |
-<%= link_to 'Back', strain_wines_path %>
+
+<%= link_to 'Back', wine_path(@strain_wine.wine) %>

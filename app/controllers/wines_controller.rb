@@ -10,6 +10,7 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.json
   def show
+    @strains = StrainWine.where(wine: @wine)
   end
 
   # GET /wines/new

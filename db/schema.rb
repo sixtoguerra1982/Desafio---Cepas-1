@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_052308) do
+ActiveRecord::Schema.define(version: 2020_04_23_192647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "enologo_newspapers", force: :cascade do |t|
+    t.bigint "newspaper_id", null: false
+    t.bigint "enologo_id", null: false
+    t.string "cargo"
+  end
+
+  create_table "enologos", force: :cascade do |t|
+    t.string "name"
+    t.integer "edad"
+    t.string "nacionalidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "newspapers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "strain_wines", force: :cascade do |t|
     t.bigint "wine_id", null: false

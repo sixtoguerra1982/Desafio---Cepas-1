@@ -1,0 +1,2 @@
+module EnologonewspapersHelper
+end

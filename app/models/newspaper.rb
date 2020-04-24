@@ -1,3 +1,3 @@
 class Newspaper < ApplicationRecord
-	has_and_belongs_to_many :enologos
+	has_many :EnologoNewspapers, dependent: :destroy
 end

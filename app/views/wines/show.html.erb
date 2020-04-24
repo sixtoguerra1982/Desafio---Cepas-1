@@ -17,6 +17,19 @@
 
 
 <h1>Notas</h1>
-
+<ul>
+<% @enologos.each do |e| %>
+	<div class="field">
+		<li>
+			<%= e.name.capitalize %>		
+			<%= form_tag notes_path do  %>
+				<%= hidden_field_tag 'enologo', e.id %>
+				<%= hidden_field_tag 'wine', @wine.id %>
+				<%= number_field_tag :score, e.score(@wine), min:0, max:100 %> 
+			<% end %>
+		</li>
+	</div>
+<%  end %>
+</ul>
 
 <%= link_to 'Back', wines_path %>

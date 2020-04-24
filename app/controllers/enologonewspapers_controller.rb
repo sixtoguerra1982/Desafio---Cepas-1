@@ -1,6 +1,4 @@
 class EnologonewspapersController < ApplicationController
-  def index
-  end
 
   def create
   	@revista = Newspaper.find(params[:newspaper].to_i)
@@ -10,8 +8,8 @@ class EnologonewspapersController < ApplicationController
 
   	if @enologonewspaper.present?
   		if ! params[:cargos_ids].nil?
-			@enologonewspaper.update(cargo: params[:cargos_ids])
-		end
+			 @enologonewspaper.update(cargo: params[:cargos_ids])
+		  end
   	else
   		EnologoNewspaper.create(newspaper: @revista , enologo: @enologo, cargo: params[:cargos_ids] )
   	end
@@ -21,10 +19,10 @@ class EnologonewspapersController < ApplicationController
 
 
   def destroy
-	@enologonewspaper = EnologoNewspaper.find(params[:id])
-	@enologo = Enologo.find(@enologonewspaper.enologo_id) 
-	@enologonewspaper.destroy
-	redirect_to @enologo
+  	@enologonewspaper = EnologoNewspaper.find(params[:id])
+  	@enologo = Enologo.find(@enologonewspaper.enologo_id) 
+  	@enologonewspaper.destroy
+  	redirect_to @enologo
   end
 
 

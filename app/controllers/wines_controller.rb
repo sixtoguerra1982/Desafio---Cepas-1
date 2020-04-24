@@ -11,6 +11,7 @@ class WinesController < ApplicationController
   # GET /wines/1.json
   def show
     @strains = StrainWine.where(wine: @wine)
+    @enologos = Enologo.all.order(:edad)
   end
 
   # GET /wines/new
